@@ -1,5 +1,6 @@
 import React from 'react';
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import Task from '../components/Task';
 
 const DATA = [
   {
@@ -27,28 +28,42 @@ const App = () => {
 
   return (
     <View style={styles.container}>
-      <FlatList
-        data={DATA}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id}
-      />
+      <ScrollView style={styles.tasksWrapper}>
+        <Text style={styles.sectionTitle}>Title</Text>
+        <View style={styles.items}>
+          <Task text={'Task 1'} />
+          <Task text={'Task 2'} />
+          <Task text={'Task 3'} />
+        </View>
+      </ScrollView>
     </View>
   );
 };
 
+{
+  /* <FlatList
+        data={DATA}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id}
+      /> */
+}
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 50,
   },
-  item: {
-    backgroundColor: '#f9c2ff',
+  items: {
+    backgroundColor: 'grey',
     padding: 20,
     marginVertical: 8,
     marginHorizontal: 16,
   },
-  title: {
+  sectionTitle: {
     fontSize: 32,
+  },
+  tasksWrapper: {
+    paddingTop: 80,
+    paddingHorizontal: 20,
   },
 });
 
