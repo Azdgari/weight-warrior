@@ -4,6 +4,7 @@ const Task = (props) => {
   return (
     <View>
       <Text>{props.text}</Text>
+      <Text></Text>
     </View>
   );
 };

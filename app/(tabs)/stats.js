@@ -1,19 +1,32 @@
 import React from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import Task from '../components/Task';
+import styles from '../assets/styles';
 
-const DATA = [
+const exerciseData = [
   {
     id: '1',
     title: 'Item 1',
+    exerciseType: 'Bench Press',
+    exerciseWeight: '135',
+    exerciseReps: '10',
+    exerciseSets: '3',
   },
   {
     id: '2',
     title: 'Item 2',
+    exerciseType: 'Deadlift',
+    exerciseWeight: '200',
+    exerciseReps: '6',
+    exerciseSets: '3',
   },
   {
     id: '3',
     title: 'Item 3',
+    exerciseType: 'Squat',
+    exerciseWeight: '185',
+    exerciseReps: '8',
+    exerciseSets: '3',
   },
 ];
 
@@ -28,43 +41,20 @@ const App = () => {
 
   return (
     <View style={styles.container}>
-      <ScrollView style={styles.tasksWrapper}>
-        <Text style={styles.sectionTitle}>Title</Text>
-        <View style={styles.items}>
-          <Task text={'Task 1'} />
-          <Task text={'Task 2'} />
-          <Task text={'Task 3'} />
-        </View>
+      <ScrollView style={styles.scroll}>
+        {exerciseData.map((item) => (
+          <View key={item.id} style={styles.exerciseWrapper}>
+            <Text style={styles.exercise}>{item.exerciseType}</Text>
+            <Text style={styles.weight}>{item.exerciseWeight} KG</Text>
+            <View style={styles.repsContainer}>
+              <Text style={styles.reps}>Reps: {item.exerciseReps}</Text>
+              <Text style={styles.sets}>Sets: {item.exerciseSets}</Text>
+            </View>
+          </View>
+        ))}
       </ScrollView>
     </View>
   );
 };
-
-{
-  /* <FlatList
-        data={DATA}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id}
-      /> */
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  items: {
-    backgroundColor: 'grey',
-    padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
-  },
-  sectionTitle: {
-    fontSize: 32,
-  },
-  tasksWrapper: {
-    paddingTop: 80,
-    paddingHorizontal: 20,
-  },
-});
 
 export default App;
