@@ -1,6 +1,6 @@
 import { View, Text, Stylesheet } from 'react-native';
 
-const Task = (props) => {
+const Exercise = (props) => {
   return (
     <View>
       <Text>{props.text}</Text>
@@ -9,6 +9,4 @@ const Task = (props) => {
   );
 };
 
-// const styles = StyleSheet.create({
-
-export default Task;
+export default Exercise;

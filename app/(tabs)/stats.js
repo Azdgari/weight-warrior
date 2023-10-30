@@ -1,6 +1,6 @@
 import React from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
-import Task from '../components/Task';
+import Exercise from '../components/exercise';
 import styles from '../assets/styles';
 
 const exerciseData = [
