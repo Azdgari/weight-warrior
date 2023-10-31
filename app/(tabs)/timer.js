@@ -8,7 +8,7 @@ const Timer = () => {
     // <View style={styles.container}>
     <View>
       <Text>Timer</Text>
-      <Link href="../modal.js">Dismiss</Link>
+      <Link href="/newEntryModal">New Entry</Link>
     </View>
   );
 };

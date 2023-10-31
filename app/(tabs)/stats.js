@@ -2,7 +2,6 @@ import React from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import ExerciseEntry from '../components/exerciseEntry';
 import styles from '../assets/styles';
-import Modal from '../modal';
 
 const exerciseData = [
   {
@@ -54,7 +53,6 @@ const App = () => {
           </View>
         ))}
       </ScrollView>
-      <Modal>+</Modal>
     </View>
   );
 };

@@ -6,6 +6,7 @@ export default ExerciseEntry = (props) => {
   const [exerciseWeight, setExerciseWeight] = useState('');
   const [exerciseReps, setExerciseReps] = useState('');
   const [exerciseSets, setExerciseSets] = useState('');
+
   return (
     <View>
       <Text>{props.text}</Text>

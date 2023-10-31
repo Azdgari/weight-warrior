@@ -1,6 +1,9 @@
-import { Tabs } from 'expo-router';
+import { Tabs, useRouter } from 'expo-router';
+import { Button } from 'react-native';
 
 export default () => {
+  const router = useRouter();
+
   return (
     <Tabs>
       <Tabs.Screen
@@ -17,6 +20,15 @@ export default () => {
           title: 'Stats',
           headerStyle: { backgroundColor: 'green' },
           headerTintColor: 'white',
+          headerRightContainerStyle: { paddingRight: 10 },
+          headerRight: () => (
+            <Button
+              color="white"
+              fontWeight="bold"
+              title="New"
+              onPress={() => router.push('newEntryModal')}
+            />
+          ),
         }}
       />
       <Tabs.Screen
