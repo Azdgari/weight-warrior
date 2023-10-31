@@ -1,5 +1,6 @@
 import { Tabs, useRouter } from 'expo-router';
-import { Button } from 'react-native';
+import { Pressable, Text } from 'react-native';
+import colors from '../assets/colors';
 
 export default () => {
   const router = useRouter();
@@ -18,16 +19,24 @@ export default () => {
         name="stats"
         options={{
           title: 'Stats',
-          headerStyle: { backgroundColor: 'green' },
+          headerStyle: { backgroundColor: colors.primary },
           headerTintColor: 'white',
-          headerRightContainerStyle: { paddingRight: 10 },
+          headerRightContainerStyle: { paddingRight: 20 },
           headerRight: () => (
-            <Button
+            <Pressable
               color="white"
-              fontWeight="bold"
               title="New"
               onPress={() => router.push('newEntryModal')}
-            />
+            >
+              <Text
+                style={{
+                  color: 'white',
+                  fontSize: 28,
+                }}
+              >
+                +
+              </Text>
+            </Pressable>
           ),
         }}
       />
