@@ -9,6 +9,12 @@ export default function StackLayout() {
         name="(tabs)"
         options={{ title: 'Home', headerShown: false }}
       />
+      <Stack.Screen
+        name="modal"
+        options={{
+          presentation: 'modal',
+        }}
+      />
     </Stack>
   );
 }
