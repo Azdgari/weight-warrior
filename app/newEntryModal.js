@@ -1,4 +1,4 @@
-import { View, Text, TextInput, Button } from 'react-native';
+import { View, Text, TextInput, Button, Pressable } from 'react-native';
 import { useState } from 'react';
 import styles from './assets/styles';
 import colors from './assets/colors';
@@ -13,14 +13,22 @@ const newEntryModal = () => {
     <View style={styles.newExerciseModal}>
       <View style={styles.inputContainer}>
         <Text style={styles.inputTitles}>Name</Text>
-        <TextInput style={styles.nameInput} placeholder={'Name of exercise'} />
+        <TextInput
+          style={styles.nameInput}
+          placeholder={'Give a name'}
+          placeholderTextColor={colors.placeholderText}
+        />
 
         <Text style={styles.inputTitles}>Weight</Text>
         <View style={styles.numericalInputWrapper}>
-          <TextInput style={styles.input} placeholder={'Current weight'} />
-          <Button title="Choose">
-            <Text>Choose</Text>
-          </Button>
+          <TextInput
+            style={styles.input}
+            placeholder={'Current weight'}
+            placeholderTextColor={colors.placeholderText}
+          />
+          <Pressable style={styles.chooseButton}>
+            <Text style={styles.chooseButtonText}>Choose</Text>
+          </Pressable>
         </View>
 
         <Text style={styles.inputTitles}>Reps</Text>
@@ -30,17 +38,21 @@ const newEntryModal = () => {
             placeholder={'Number of reps'}
             placeholderTextColor={colors.placeholderText}
           />
-          <Button title="Choose">
-            <Text>Choose</Text>
-          </Button>
+          <Pressable style={styles.chooseButton}>
+            <Text style={styles.chooseButtonText}>Choose</Text>
+          </Pressable>
         </View>
 
         <Text style={styles.inputTitles}>Sets</Text>
         <View style={styles.numericalInputWrapper}>
-          <TextInput style={styles.input} placeholder={'Number of sets'} />
-          <Button title="Choose">
-            <Text>Choose</Text>
-          </Button>
+          <TextInput
+            style={styles.input}
+            placeholder={'Number of sets'}
+            placeholderTextColor={colors.placeholderText}
+          />
+          <Pressable style={styles.chooseButton}>
+            <Text style={styles.chooseButtonText}>Choose</Text>
+          </Pressable>
         </View>
       </View>
     </View>

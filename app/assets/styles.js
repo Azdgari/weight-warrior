@@ -91,6 +91,8 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     marginTop: 10,
     borderRadius: 10,
+    paddingHorizontal: 10,
+    fontSize: 24,
   },
 
   input: {
@@ -103,12 +105,32 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     marginTop: 10,
     borderRadius: 10,
+    paddingHorizontal: 10,
   },
 
   numericalInputWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+  },
+
+  chooseButton: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 15,
+    paddingHorizontal: 30,
+    marginBottom: 10,
+    borderRadius: 4,
+    elevation: 3,
+    // backgroundColor: 'black',
+  },
+
+  chooseButtonText: {
+    fontSize: 16,
+    lineHeight: 21,
+    fontWeight: 'bold',
+    letterSpacing: 0.25,
+    color: 'white',
   },
 });
 
