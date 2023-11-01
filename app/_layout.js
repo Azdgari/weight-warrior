@@ -14,10 +14,7 @@ export default function StackLayout() {
         name="newEntryModal"
         options={{
           presentation: 'modal',
-          headerTitle: 'New Entry',
-          headerRight: () => (
-            <Button title="Open" onPress={() => router.push('newEntryModal')} />
-          ),
+          headerTitle: 'New Exercise',
         }}
       />
     </Stack>

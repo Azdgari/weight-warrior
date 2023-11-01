@@ -61,6 +61,20 @@ const styles = StyleSheet.create({
     paddingTop: 80,
     paddingHorizontal: 20,
   },
+
+  // New Entry Modal
+  inputContainer: {
+    backgroundColor: 'grey',
+    padding: 20,
+    marginVertical: 8,
+    marginHorizontal: 16,
+  },
+
+  input: {
+    height: 80,
+    margin: 12,
+    borderWidth: 1,
+  },
 });
 
 export default styles;
