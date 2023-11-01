@@ -1,6 +1,7 @@
-import { View, Text, TextInput, StyleSheet } from 'react-native';
+import { View, Text, TextInput, Button } from 'react-native';
 import { useState } from 'react';
 import styles from './assets/styles';
+import colors from './assets/colors';
 
 const newEntryModal = () => {
   const [exerciseName, setExerciseName] = useState('');
@@ -9,13 +10,38 @@ const newEntryModal = () => {
   const [exerciseSets, setExerciseSets] = useState('');
 
   return (
-    <View>
-      <Text>New Exercise</Text>
+    <View style={styles.newExerciseModal}>
       <View style={styles.inputContainer}>
-        <TextInput style={styles.input} placeholder={'Name of exercise'} />
-        <TextInput style={styles.input} placeholder={'Current weight'} />
-        <TextInput style={styles.input} placeholder={'Number of reps'} />
-        <TextInput style={styles.input} placeholder={'Number of sets'} />
+        <Text style={styles.inputTitles}>Name</Text>
+        <TextInput style={styles.nameInput} placeholder={'Name of exercise'} />
+
+        <Text style={styles.inputTitles}>Weight</Text>
+        <View style={styles.numericalInputWrapper}>
+          <TextInput style={styles.input} placeholder={'Current weight'} />
+          <Button title="Choose">
+            <Text>Choose</Text>
+          </Button>
+        </View>
+
+        <Text style={styles.inputTitles}>Reps</Text>
+        <View style={styles.numericalInputWrapper}>
+          <TextInput
+            style={styles.input}
+            placeholder={'Number of reps'}
+            placeholderTextColor={colors.placeholderText}
+          />
+          <Button title="Choose">
+            <Text>Choose</Text>
+          </Button>
+        </View>
+
+        <Text style={styles.inputTitles}>Sets</Text>
+        <View style={styles.numericalInputWrapper}>
+          <TextInput style={styles.input} placeholder={'Number of sets'} />
+          <Button title="Choose">
+            <Text>Choose</Text>
+          </Button>
+        </View>
       </View>
     </View>
   );

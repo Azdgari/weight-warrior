@@ -1,5 +1,6 @@
 import { Stack, useRouter } from 'expo-router';
 import { Button } from 'react-native';
+import colors from './assets/colors';
 
 export default function StackLayout() {
   const router = useRouter();
@@ -15,6 +16,8 @@ export default function StackLayout() {
         options={{
           presentation: 'modal',
           headerTitle: 'New Exercise',
+          headerStyle: { backgroundColor: colors.primary },
+          headerTintColor: 'white',
         }}
       />
     </Stack>

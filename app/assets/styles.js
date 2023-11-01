@@ -63,17 +63,52 @@ const styles = StyleSheet.create({
   },
 
   // New Entry Modal
+
+  newExerciseModal: {
+    backgroundColor: colors.background,
+    height: '100%',
+  },
+
+  inputTitles: {
+    color: colors.text,
+    fontSize: 22,
+    fontWeight: 'bold',
+  },
+
   inputContainer: {
-    backgroundColor: 'grey',
     padding: 20,
-    marginVertical: 8,
+    marginVertical: 16,
     marginHorizontal: 16,
+    borderRadius: 10,
+  },
+
+  nameInput: {
+    color: colors.text,
+    backgroundColor: colors.textEntryBackground,
+    borderColor: colors.text,
+    height: 80,
+    borderWidth: 2,
+    marginBottom: 20,
+    marginTop: 10,
+    borderRadius: 10,
   },
 
   input: {
-    height: 80,
-    margin: 12,
-    borderWidth: 1,
+    color: colors.text,
+    backgroundColor: colors.textEntryBackground,
+    borderColor: colors.text,
+    height: 50,
+    width: '75%',
+    borderWidth: 2,
+    marginBottom: 20,
+    marginTop: 10,
+    borderRadius: 10,
+  },
+
+  numericalInputWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
 });
 
