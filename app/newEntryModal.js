@@ -25,6 +25,7 @@ const newEntryModal = () => {
             style={styles.input}
             placeholder={'Current weight'}
             placeholderTextColor={colors.placeholderText}
+            keyboardType="numeric"
           />
           <Pressable style={styles.chooseButton}>
             <Text style={styles.chooseButtonText}>Choose</Text>
@@ -37,6 +38,7 @@ const newEntryModal = () => {
             style={styles.input}
             placeholder={'Number of reps'}
             placeholderTextColor={colors.placeholderText}
+            keyboardType="numeric"
           />
           <Pressable style={styles.chooseButton}>
             <Text style={styles.chooseButtonText}>Choose</Text>
@@ -49,6 +51,7 @@ const newEntryModal = () => {
             style={styles.input}
             placeholder={'Number of sets'}
             placeholderTextColor={colors.placeholderText}
+            keyboardType="numeric"
           />
           <Pressable style={styles.chooseButton}>
             <Text style={styles.chooseButtonText}>Choose</Text>
