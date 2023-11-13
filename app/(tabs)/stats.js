@@ -1,12 +1,28 @@
-import React, { useState, useContext } from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import React, { useContext, useEffect } from 'react';
+import { ScrollView, Text, View } from 'react-native';
 import styles from '../assets/styles';
 import NewEntryModal from '../(modals)/newEntryModal';
 import StackLayout from '../_layout';
 import { AppStateContext } from '../appStateContext';
+import { db } from '../firebaseConfig';
+import { collection, getDocs } from 'firebase/firestore';
 
 const Stats = () => {
-  const { sharedState } = useContext(AppStateContext);
+  const { sharedState, setSharedState } = useContext(AppStateContext);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, 'exercises'));
+        const data = querySnapshot.docs.map((doc) => doc.data());
+        setSharedState(data);
+      } catch (error) {
+        console.log('Error fetching data: ', error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <View style={styles.container}>

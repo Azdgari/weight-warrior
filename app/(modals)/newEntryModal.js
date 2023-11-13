@@ -4,6 +4,8 @@ import { AppStateContext } from '../appStateContext';
 import styles from '../assets/styles';
 import colors from '../assets/colors';
 import { useRouter } from 'expo-router';
+import { db } from '../firebaseConfig';
+import { collection, addDoc } from 'firebase/firestore';
 
 const NewEntryModal = () => {
   const router = useRouter();
@@ -24,6 +26,8 @@ const NewEntryModal = () => {
       exerciseReps: exerciseReps,
       exerciseSets: exerciseSets,
     };
+    addDoc(collection(db, 'exercises'), newEntry);
+
     setExerciseData([...exerciseData, newEntry]);
 
     setSharedState((currentData) => [...currentData, newEntry]);
