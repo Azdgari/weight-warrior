@@ -1,12 +1,12 @@
 import { View, Text, TextInput, Button, Pressable } from 'react-native';
 import { useState, useContext } from 'react';
-import { AppStateContext } from './appStateContext';
-import styles from './assets/styles';
-import colors from './assets/colors';
-import useRouter from 'expo-router';
+import { AppStateContext } from '../appStateContext';
+import styles from '../assets/styles';
+import colors from '../assets/colors';
+import { useRouter } from 'expo-router';
 
 const NewEntryModal = () => {
-  // const router = useRouter();
+  const router = useRouter();
   const { sharedState, setSharedState } = useContext(AppStateContext);
 
   const [exerciseName, setExerciseName] = useState();
@@ -32,7 +32,7 @@ const NewEntryModal = () => {
     setExerciseWeight('');
     setExerciseReps('');
     setExerciseSets('');
-    // router.back();
+    router.back();
   };
 
   return (

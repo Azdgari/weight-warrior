@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import styles from '../assets/styles';
-import NewEntryModal from '../newEntryModal';
+import NewEntryModal from '../(modals)/newEntryModal';
 import StackLayout from '../_layout';
 import { AppStateContext } from '../appStateContext';
 

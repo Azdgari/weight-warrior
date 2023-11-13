@@ -14,9 +14,10 @@ export default function StackLayout() {
           options={{ title: 'Home', headerShown: false }}
         />
         <Stack.Screen
-          name="newEntryModal"
+          name="(modals)/newEntryModal"
           options={{
             presentation: 'modal',
+            animation: 'fade',
             headerTitle: 'New Exercise',
             headerStyle: { backgroundColor: colors.primary },
             headerTintColor: 'white',

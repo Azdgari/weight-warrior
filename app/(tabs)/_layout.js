@@ -1,24 +1,37 @@
 import { Tabs, useRouter } from 'expo-router';
 import { Pressable, Text } from 'react-native';
+import { Feather, Ionicons, FontAwesome } from '@expo/vector-icons';
 import colors from '../assets/colors';
 
 export default () => {
   const router = useRouter();
 
   return (
-    <Tabs>
+    <Tabs
+      screenOptions={{
+        tabBarActiveTintColor: colors.primary,
+        tabBarLabelStyle: { fontSize: 12, fontWeight: 'bold' },
+      }}
+    >
       <Tabs.Screen
         name="timer"
         options={{
           title: 'Timer',
           headerStyle: { backgroundColor: 'brown' },
           headerTintColor: 'white',
+          tabBarLabel: 'Timer',
+          tabBarIcon: ({ color, size }) => (
+            <Feather name="clock" size={size} color={color} />
+          ),
         }}
       />
       <Tabs.Screen
         name="stats"
         options={{
           title: 'Stats',
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="stats-chart" size={size} color={color} />
+          ),
           headerStyle: { backgroundColor: colors.primary },
           headerTintColor: 'white',
           headerRightContainerStyle: { paddingRight: 20 },
@@ -44,6 +57,9 @@ export default () => {
         name="howto"
         options={{
           title: 'How To',
+          tabBarIcon: ({ color, size }) => (
+            <FontAwesome name="book" size={size} color={color} />
+          ),
           headerStyle: { backgroundColor: 'navy' },
           headerTintColor: 'white',
         }}
