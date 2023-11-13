@@ -1,30 +1,38 @@
 import { View, Text, TextInput, Button, Pressable } from 'react-native';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { AppStateContext } from './appStateContext';
 import styles from './assets/styles';
 import colors from './assets/colors';
+import useRouter from 'expo-router';
 
 const NewEntryModal = () => {
+  // const router = useRouter();
+  const { sharedState, setSharedState } = useContext(AppStateContext);
+
   const [exerciseName, setExerciseName] = useState();
   const [exerciseWeight, setExerciseWeight] = useState();
   const [exerciseReps, setExerciseReps] = useState();
   const [exerciseSets, setExerciseSets] = useState();
 
-  const exerciseData = [];
+  const [exerciseData, setExerciseData] = useState([]);
 
   const handleExerciseInput = () => {
-    exerciseData.push({
+    const newEntry = {
       id: Math.random().toString(),
       exerciseName: exerciseName,
       exerciseWeight: exerciseWeight,
       exerciseReps: exerciseReps,
       exerciseSets: exerciseSets,
-    });
-    setExerciseName(null);
+    };
+    setExerciseData([...exerciseData, newEntry]);
+
+    setSharedState((currentData) => [...currentData, newEntry]);
+
+    setExerciseName('');
     setExerciseWeight('');
     setExerciseReps('');
     setExerciseSets('');
-
-    console.log(exerciseData);
+    // router.back();
   };
 
   return (
@@ -35,6 +43,7 @@ const NewEntryModal = () => {
           style={styles.nameInput}
           placeholder={'Give a name'}
           placeholderTextColor={colors.placeholderText}
+          value={exerciseName}
           onChangeText={(text) => setExerciseName(text)}
         />
 
@@ -45,6 +54,7 @@ const NewEntryModal = () => {
             placeholder={'Current weight'}
             placeholderTextColor={colors.placeholderText}
             keyboardType="numeric"
+            value={exerciseWeight}
             onChangeText={(text) => setExerciseWeight(text)}
           />
           <Pressable style={styles.chooseButton}>
@@ -59,6 +69,7 @@ const NewEntryModal = () => {
             placeholder={'Number of reps'}
             placeholderTextColor={colors.placeholderText}
             keyboardType="numeric"
+            value={exerciseReps}
             onChangeText={(text) => setExerciseReps(text)}
           />
           <Pressable style={styles.chooseButton}>
@@ -73,6 +84,7 @@ const NewEntryModal = () => {
             placeholder={'Number of sets'}
             placeholderTextColor={colors.placeholderText}
             keyboardType="numeric"
+            value={exerciseSets}
             onChangeText={(text) => setExerciseSets(text)}
           />
           <Pressable style={styles.chooseButton}>
