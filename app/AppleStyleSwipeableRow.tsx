@@ -5,10 +5,12 @@ import { RectButton } from 'react-native-gesture-handler';
 
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 
-export default class AppleStyleSwipeableRow extends Component<
-  PropsWithChildren<unknown>
-> {
-
+export default class AppleStyleSwipeableRow extends Component<{
+  onDelete: (id: string) => void;
+  itemId: string;
+  // children:
+}> {
+  // PropsWithChildren<unknown>
 
   private renderRightAction = (
     text: string,
@@ -20,11 +22,12 @@ export default class AppleStyleSwipeableRow extends Component<
       inputRange: [0, 1],
       outputRange: [x, 0],
     });
+
     const pressHandler = () => {
       this.close();
-      // eslint-disable-next-line no-alert
-      window.alert(text);
+      this.props.onDelete(this.props.itemId)
     };
+
 
     return (
       <Animated.View style={{ flex: 1, transform: [{ translateX: trans }] }}>

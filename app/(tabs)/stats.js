@@ -13,6 +13,12 @@ import AppleStyleSwipeableRow from '../AppleStyleSwipeableRow';
 const Stats = () => {
   const { sharedState, setSharedState } = useContext(AppStateContext);
 
+  const handleDelete = async (itemId) => {
+    // delete logic
+    const newSharedState = sharedState.filter((item) => item.id !== itemId);
+    setSharedState(newSharedState);
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -32,7 +38,7 @@ const Stats = () => {
       <FlatList
         data={sharedState}
         renderItem={({ item }) => (
-          <AppleStyleSwipeableRow>
+          <AppleStyleSwipeableRow onDelete={handleDelete} itemId={item.id}>
             <View style={styles.exerciseWrapper}>
               <Text style={styles.exercise}>{item.exerciseName}</Text>
               <Text style={styles.weight}>{item.exerciseWeight} KG</Text>
