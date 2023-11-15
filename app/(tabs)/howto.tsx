@@ -1,16 +1,3 @@
-// import { View, Text, StyleSheet } from 'react-native';
-// import React from 'react';
-// import styles from '../assets/styles';
-
-// const howto = () => {
-//   return (
-//     <View style={styles.container}>
-//       <Text>How To</Text>
-//     </View>
-//   );
-// };
-
-// export default howto;
 
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, I18nManager } from 'react-native';
@@ -18,7 +5,6 @@ import { StyleSheet, Text, View, I18nManager } from 'react-native';
 import { FlatList, RectButton } from 'react-native-gesture-handler';
 
 import AppleStyleSwipeableRow from '../AppleStyleSwipeableRow';
-import GmailStyleSwipeableRow from '../GmailStyleSwipeableRow';
 
 //  To toggle LTR/RTL change to `true`
 I18nManager.allowRTL(false);

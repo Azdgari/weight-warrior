@@ -8,6 +8,7 @@ import { db } from '../firebaseConfig';
 import { collection, getDocs } from 'firebase/firestore';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import AppleStyleSwipeableRow from '../AppleStyleSwipeableRow';
 
 const Stats = () => {
   const { sharedState, setSharedState } = useContext(AppStateContext);
@@ -31,14 +32,16 @@ const Stats = () => {
       <FlatList
         data={sharedState}
         renderItem={({ item }) => (
-          <View style={styles.exerciseWrapper}>
-            <Text style={styles.exercise}>{item.exerciseName}</Text>
-            <Text style={styles.weight}>{item.exerciseWeight} KG</Text>
-            <View style={styles.repsContainer}>
-              <Text style={styles.reps}>Reps: {item.exerciseReps}</Text>
-              <Text style={styles.sets}>Sets: {item.exerciseSets}</Text>
+          <AppleStyleSwipeableRow>
+            <View style={styles.exerciseWrapper}>
+              <Text style={styles.exercise}>{item.exerciseName}</Text>
+              <Text style={styles.weight}>{item.exerciseWeight} KG</Text>
+              <View style={styles.repsContainer}>
+                <Text style={styles.reps}>Reps: {item.exerciseReps}</Text>
+                <Text style={styles.sets}>Sets: {item.exerciseSets}</Text>
+              </View>
             </View>
-          </View>
+          </AppleStyleSwipeableRow>
         )}
         keyExtractor={(item) => item.id}
       />
