@@ -19,18 +19,28 @@ const NewEntryModal = () => {
   const [exerciseData, setExerciseData] = useState([]);
 
   const handleExerciseInput = async () => {
+    const tempId = Date.now().toString();
     const newEntry = {
+      id: tempId,
       exerciseName: exerciseName,
       exerciseWeight: exerciseWeight,
       exerciseReps: exerciseReps,
       exerciseSets: exerciseSets,
     };
+
+    setSharedState((currentData) => [...currentData, newEntry]);
+    router.back();
+
     try {
       const docRef = await addDoc(collection(db, 'exercises'), newEntry);
       console.log('Document written with ID: ', docRef.id);
       const addedEntry = { ...newEntry, id: docRef.id };
-      setExerciseData([...exerciseData, addedEntry]);
-      setSharedState((currentData) => [...currentData, addedEntry]);
+      // setExerciseData([...exerciseData, addedEntry]);
+      setSharedState((currentData) =>
+        currentData.map((item) =>
+          item.id === tempId ? { ...item, id: docRef.id } : item
+        )
+      );
     } catch (error) {
       console.log('Error adding document: ', error);
     }
@@ -39,7 +49,6 @@ const NewEntryModal = () => {
     setExerciseWeight('');
     setExerciseReps('');
     setExerciseSets('');
-    router.back();
   };
 
   return (

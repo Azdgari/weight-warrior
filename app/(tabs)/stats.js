@@ -18,6 +18,9 @@ const Stats = () => {
     try {
       await deleteDoc(doc(db, 'exercises', itemId));
       console.log('Document ' + itemId + ' deleted!');
+      setSharedState((currentData) =>
+        currentData.filter((item) => item.id !== itemId)
+      );
     } catch (error) {
       console.log('Error deleting document: ', error);
     }
