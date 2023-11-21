@@ -1,4 +1,4 @@
-import { View, Text, TextInput, Button, Pressable } from 'react-native';
+import { View, Text, TextInput, Pressable } from 'react-native';
 import { useState, useContext } from 'react';
 import { AppStateContext } from '../appStateContext';
 import styles from '../assets/styles';
@@ -18,19 +18,22 @@ const NewEntryModal = () => {
 
   const [exerciseData, setExerciseData] = useState([]);
 
-  const handleExerciseInput = () => {
+  const handleExerciseInput = async () => {
     const newEntry = {
-      id: Math.random().toString(),
       exerciseName: exerciseName,
       exerciseWeight: exerciseWeight,
       exerciseReps: exerciseReps,
       exerciseSets: exerciseSets,
     };
-    addDoc(collection(db, 'exercises'), newEntry);
-
-    setExerciseData([...exerciseData, newEntry]);
-
-    setSharedState((currentData) => [...currentData, newEntry]);
+    try {
+      const docRef = await addDoc(collection(db, 'exercises'), newEntry);
+      console.log('Document written with ID: ', docRef.id);
+      const addedEntry = { ...newEntry, id: docRef.id };
+      setExerciseData([...exerciseData, addedEntry]);
+      setSharedState((currentData) => [...currentData, addedEntry]);
+    } catch (error) {
+      console.log('Error adding document: ', error);
+    }
 
     setExerciseName('');
     setExerciseWeight('');
