@@ -1,5 +1,6 @@
 import colors from './colors';
 import { StyleSheet } from 'react-native';
+import Constants from 'expo-constants';
 
 const styles = StyleSheet.create({
   container: {
@@ -122,7 +123,6 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     borderRadius: 4,
     elevation: 3,
-    // backgroundColor: 'black',
   },
 
   chooseButtonText: {
@@ -131,6 +131,17 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     letterSpacing: 0.25,
     color: 'white',
+  },
+
+  // Timer
+
+  timerContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingTop: Constants.statusBarHeight,
+    backgroundColor: colors.background,
+    padding: 8,
   },
 });
 
