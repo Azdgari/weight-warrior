@@ -1,6 +1,6 @@
 # Weight Warrior
 
-**(Work-in-progress) **
+** This app is a work-in-progress **
 
 A light fitness tracker app designed to assist users in their fitness journey. Features a timer, a weight tracker, and a how-to library.
 
