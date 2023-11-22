@@ -13,4 +13,4 @@ A light fitness tracker app designed to assist users in their fitness journey. F
 - **Firebase**: Integrated for backend operations including data storage and real-time updates.
 
 ## Contributions
-Contributions to Weight Warrior are welcome! Feel free to submit issues or pull requests.
+Contributions are welcome. Feel free to submit issues or pull requests.
