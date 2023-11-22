@@ -7,10 +7,10 @@ A light fitness tracker app designed to assist users in their fitness journey. F
 - **Weight Tracker**: Log the weights, reps, and sets for your current exercises.
 - **How-To Library**: A collection of tips for a variety of exercises.
 
-## Technologies
+## Tech
 - **Expo Router**: Utilized for navigation and routing.
 - **React Native**: The core framework for building the mobile application for deployment on iOS and Android.
 - **Firebase**: Integrated for backend operations including data storage and real-time updates.
 
-## Contribution
+## Contributions
 Contributions to Weight Warrior are welcome! Feel free to submit issues or pull requests.
