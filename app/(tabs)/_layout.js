@@ -11,13 +11,18 @@ export default () => {
       screenOptions={{
         tabBarActiveTintColor: colors.primary,
         tabBarLabelStyle: { fontSize: 12, fontWeight: 'bold' },
+        tabBarStyle: {
+          backgroundColor: colors.background,
+          // borderTopColor: colors.background,
+        },
+        // tabBarInactiveTintColor: colors.text,
       }}
     >
       <Tabs.Screen
         name="timer"
         options={{
           title: 'Timer',
-          headerStyle: { backgroundColor: 'brown' },
+          headerStyle: { backgroundColor: colors.navigationText },
           headerTintColor: 'white',
           tabBarLabel: 'Timer',
           tabBarIcon: ({ color, size }) => (
@@ -77,7 +82,7 @@ export default () => {
           tabBarIcon: ({ color, size }) => (
             <FontAwesome name="book" size={size} color={color} />
           ),
-          headerStyle: { backgroundColor: 'navy' },
+          headerStyle: { backgroundColor: colors.primary },
           headerTintColor: 'white',
         }}
       />

@@ -23,6 +23,16 @@ export default function StackLayout() {
             headerTintColor: 'white',
           }}
         />
+        <Stack.Screen
+          name="(modals)/editTimerModal"
+          options={{
+            presentation: 'modal',
+            animation: 'fade',
+            headerTitle: 'Edit Timer',
+            headerStyle: { backgroundColor: colors.primary },
+            headerTintColor: 'white',
+          }}
+        />
       </Stack>
     </AppStateProvider>
   );
