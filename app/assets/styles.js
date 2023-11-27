@@ -143,6 +143,11 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background,
     padding: 8,
   },
+
+  editTimerButton: {
+    color: 'white',
+    marginTop: 50,
+  },
 });
 
 export default styles;
