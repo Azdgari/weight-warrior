@@ -29,22 +29,6 @@ export default () => {
             <Feather name="clock" size={size} color={color} />
           ),
           headerRightContainerStyle: { paddingRight: 20 },
-          headerRight: () => (
-            <Pressable
-              color="white"
-              title="New"
-              onPress={() => router.push('editTimerModal')}
-            >
-              <Text
-                style={{
-                  color: 'white',
-                  fontSize: 28,
-                }}
-              >
-                +
-              </Text>
-            </Pressable>
-          ),
         }}
       />
       <Tabs.Screen

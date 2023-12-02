@@ -27,7 +27,7 @@ export default function StackLayout() {
           name="(modals)/editTimerModal"
           options={{
             presentation: 'modal',
-            animation: 'fade',
+            // animation: 'fade',
             headerTitle: 'Edit Timer',
             headerStyle: { backgroundColor: colors.primary },
             headerTintColor: 'white',
