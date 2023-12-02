@@ -8,17 +8,17 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import AppleStyleSwipeableRow from '../AppleStyleSwipeableRow';
 
 const Stats = () => {
-  const { sharedState, setSharedState } = useContext(AppStateContext);
+  const { exerciseEntries, setExerciseEntries } = useContext(AppStateContext);
 
   const handleDelete = async (itemId) => {
-    setSharedState((currentData) =>
+    setExerciseEntries((currentData) =>
       currentData.filter((item) => item.id !== itemId)
     );
 
     try {
       await deleteDoc(doc(db, 'exercises', itemId));
       console.log('Document ' + itemId + ' deleted!');
-      setSharedState((currentData) =>
+      setExerciseEntries((currentData) =>
         currentData.filter((item) => item.id !== itemId)
       );
     } catch (error) {
@@ -34,7 +34,7 @@ const Stats = () => {
           id: doc.id,
           ...doc.data(),
         }));
-        setSharedState(data);
+        setExerciseEntries(data);
       } catch (error) {
         console.log('Error fetching data: ', error);
       }
@@ -46,7 +46,7 @@ const Stats = () => {
   return (
     <GestureHandlerRootView style={styles.container}>
       <FlatList
-        data={sharedState}
+        data={exerciseEntries}
         renderItem={({ item }) => (
           <AppleStyleSwipeableRow onDelete={handleDelete} itemId={item.id}>
             <View style={styles.exerciseWrapper}>

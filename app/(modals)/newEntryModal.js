@@ -9,7 +9,7 @@ import { collection, addDoc } from 'firebase/firestore';
 
 const NewEntryModal = () => {
   const router = useRouter();
-  const { sharedState, setSharedState } = useContext(AppStateContext);
+  const { exerciseEntries, setExerciseEntries } = useContext(AppStateContext);
 
   const [exerciseName, setExerciseName] = useState();
   const [exerciseWeight, setExerciseWeight] = useState();
@@ -28,7 +28,7 @@ const NewEntryModal = () => {
       exerciseSets: exerciseSets,
     };
 
-    setSharedState((currentData) => [...currentData, newEntry]);
+    setExerciseEntries((currentData) => [...currentData, newEntry]);
     router.back();
 
     try {
@@ -36,7 +36,7 @@ const NewEntryModal = () => {
       console.log('Document written with ID: ', docRef.id);
       const addedEntry = { ...newEntry, id: docRef.id };
       // setExerciseData([...exerciseData, addedEntry]);
-      setSharedState((currentData) =>
+      setExerciseEntries((currentData) =>
         currentData.map((item) =>
           item.id === tempId ? { ...item, id: docRef.id } : item
         )

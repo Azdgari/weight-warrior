@@ -1,14 +1,16 @@
-import * as React from 'react';
+import { useState, useContext } from 'react';
 import { Text, View, Button, Pressable } from 'react-native';
 import { CountdownCircleTimer } from 'react-native-countdown-circle-timer';
+import { AppStateContext } from '../appStateContext';
 import styles from '../assets/styles';
 import { Feather } from '@expo/vector-icons';
 import colors from '../assets/colors';
 import { useRouter } from 'expo-router';
 
-export default function App() {
-  const [isPlaying, setIsPlaying] = React.useState(false);
-  const [count, setCount] = React.useState(5);
+export default function Timer() {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [count, setCount] = useState(5);
+  const { sharedState, setSharedState } = useContext(AppStateContext);
 
   const router = useRouter();
 
