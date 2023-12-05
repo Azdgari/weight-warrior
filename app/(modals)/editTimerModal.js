@@ -11,7 +11,7 @@ import { Picker } from '@react-native-picker/picker';
 const editTimerModal = () => {
   const router = useRouter();
   const { timerSettings, setTimerSettings } = useContext(AppStateContext);
-  const { currentNumber, setCurrentNumber } = useState(0);
+  const [currentNumber, setCurrentNumber] = useState(60);
 
   const numbers = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60];
 
@@ -21,7 +21,8 @@ const editTimerModal = () => {
 
   const handleTimerInput = (currentData) => {
     setTimerSettings(currentData);
-    console.log(timerSettings);
+    console.log('Timer value: ', timerSettings);
+    console.log('Current number: ', currentNumber);
     router.back();
   };
 

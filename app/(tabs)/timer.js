@@ -9,27 +9,38 @@ import { useRouter } from 'expo-router';
 
 export default function Timer() {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [count, setCount] = useState(5);
-  const { sharedState, setSharedState } = useContext(AppStateContext);
+  const { timerSettings, setTimerSettings } = useContext(AppStateContext);
 
   const router = useRouter();
 
   return (
     <View style={styles.container}>
       <View style={styles.timerContainer}>
-        <Pressable onPress={() => setIsPlaying((prev) => !prev)}>
+        <Pressable
+          onPress={() => {
+            if (timerSettings > 0) {
+              setIsPlaying((prev) => !prev);
+            } else {
+              alert('Please set a timer length');
+            }
+          }}
+        >
           <CountdownCircleTimer
             isPlaying={isPlaying}
-            duration={count}
-            initialRemainingTime={6}
+            duration={timerSettings}
+            initialRemainingTime={timerSettings}
             colors={['#004777', '#F7B801', '#A30000', '#A30000']}
             colorsTime={[10, 6, 3, 0]}
             onComplete={() => ({ shouldRepeat: true, delay: 2 })}
             size={250}
             strokeWidth={12}
             onUpdate={(remainingTime) => {
-              console.log('Counter is ', count);
+              console.log('Counter is ', timerSettings);
               console.log('Remaining time is ', remainingTime);
+              if (remainingTime === 0) {
+                setIsPlaying(false);
+                alert('Time is up!');
+              }
             }}
             trailColor={colors.primary}
             strokeLinecap="round"
