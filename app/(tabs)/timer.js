@@ -10,8 +10,13 @@ import { useRouter } from 'expo-router';
 export default function Timer() {
   const [isPlaying, setIsPlaying] = useState(false);
   const { timerSettings, setTimerSettings } = useContext(AppStateContext);
+  const [resetKey, setResetKey] = useState(0);
 
   const router = useRouter();
+
+  const handleReset = () => {
+    setResetKey((prev) => prev + 1);
+  };
 
   return (
     <View style={styles.container}>
@@ -26,6 +31,8 @@ export default function Timer() {
           }}
         >
           <CountdownCircleTimer
+            // key={timerSettings}
+            key={resetKey}
             isPlaying={isPlaying}
             duration={timerSettings}
             initialRemainingTime={timerSettings}
@@ -52,14 +59,21 @@ export default function Timer() {
             )}
           </CountdownCircleTimer>
         </Pressable>
-        <Pressable style={styles.editTimerButton}>
-          <Feather
-            name="settings"
-            size={35}
-            color="white"
-            onPress={() => router.push('editTimerModal')}
-          />
-        </Pressable>
+        <View
+          style={{ flexDirection: 'row', alignItems: 'flex-end', gap: '40' }}
+        >
+          <Pressable style={styles.editTimerButton}>
+            <Feather
+              name="settings"
+              size={35}
+              color="white"
+              onPress={() => router.push('editTimerModal')}
+            />
+          </Pressable>
+          <Pressable style={styles.resetButton} onPress={handleReset}>
+            <Feather name="rotate-ccw" size={35} color="white" />
+          </Pressable>
+        </View>
       </View>
 
       <View></View>
