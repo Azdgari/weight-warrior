@@ -46,7 +46,7 @@ export default function Timer() {
               console.log('Remaining time is ', remainingTime);
               if (remainingTime === 0) {
                 setIsPlaying(false);
-                alert('Time is up!');
+                // alert('Time is up!');
               }
             }}
             trailColor={colors.primary}

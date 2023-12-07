@@ -4,25 +4,24 @@ import { AppStateContext } from '../appStateContext';
 import styles from '../assets/styles';
 import colors from '../assets/colors';
 import { useRouter } from 'expo-router';
-import { db } from '../firebaseConfig';
-import { collection, addDoc } from 'firebase/firestore';
+import { getDatabase, ref, set } from 'firebase/database';
+import { rtdb } from '../firebaseConfig';
 import { Picker } from '@react-native-picker/picker';
+
+const updateDefaultCount = (newCount) => {
+  set(ref(rtdb, 'defaultCount'), newCount);
+};
 
 const editTimerModal = () => {
   const router = useRouter();
   const { timerSettings, setTimerSettings } = useContext(AppStateContext);
-  const [currentNumber, setCurrentNumber] = useState(60);
 
   const numbers = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60];
 
-  const numberChangeHandler = (number) => {
-    setCurrentNumber(number);
-  };
-
-  const handleTimerInput = (currentData) => {
-    setTimerSettings(currentData);
+  const handleTimerInput = (newTimerValue) => {
+    setTimerSettings(newTimerValue);
+    updateDefaultCount(newTimerValue);
     console.log('Timer value: ', timerSettings);
-    console.log('Current number: ', currentNumber);
     router.back();
   };
 
@@ -30,14 +29,12 @@ const editTimerModal = () => {
     <View style={styles.newExerciseModal}>
       <View style={styles.inputContainer}>
         <Text style={styles.inputTitles}>
-          Enter timer length - current length: {currentNumber}
+          Enter timer length - current length: {timerSettings}
         </Text>
 
         <Picker
-          selectedValue={currentNumber}
-          onValueChange={(itemValue, itemIndex) =>
-            numberChangeHandler(itemValue)
-          }
+          selectedValue={timerSettings}
+          onValueChange={(itemValue, itemIndex) => setTimerSettings(itemValue)}
         >
           {numbers.map((number) => (
             <Picker.Item
@@ -50,7 +47,7 @@ const editTimerModal = () => {
         </Picker>
         <Pressable
           style={styles.chooseButton}
-          onPress={() => handleTimerInput(currentNumber)}
+          onPress={() => handleTimerInput(timerSettings)}
         >
           <Text style={styles.chooseButtonText}>Submit</Text>
         </Pressable>
